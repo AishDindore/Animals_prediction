@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1b2735, #090a0f);
+    color: #fff;
+}
+
+/* MAIN WRAPPER */
+.app-wrapper {
+    display: flex;
+    max-width: 1100px;
+    margin: 60px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* LEFT PANEL */
+.left-panel {
+    flex: 1;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255,183,3,0.15), rgba(255,255,255,0.02));
+}
+
+.left-panel h1 {
+    font-size: 36px;
+    color: #ffb703;
+}
+
+.tagline {
+    margin: 10px 0 30px;
+    color: #ddd;
+}
+
+/* UPLOAD */
+.upload-area {
+    display: block;
+    border: 2px dashed #ffb703;
+    padding: 35px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.upload-area input {
+    display: none;
+}
+
+.upload-area span {
+    font-size: 15px;
+    color: #ffb703;
+}
+
+/* BUTTON */
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffb703, #ff8800);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+/* IMAGE PREVIEW */
+.preview {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.preview img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    flex: 1;
+    padding: 40px;
+    background: rgba(0,0,0,0.4);
+}
+
+.right-panel h2 {
+    margin-bottom: 20px;
+    color: #ffb703;
+}
+
+/* RESULT */
+.result-box {
+    background: rgba(255,183,3,0.15);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+.result-box h3 {
+    font-size: 28px;
+}
+
+.placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* CLASS CLOUD */
+.class-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.class-cloud span {
+    background: rgba(255,255,255,0.08);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .app-wrapper {
+        flex-direction: column;
+    }
+}
