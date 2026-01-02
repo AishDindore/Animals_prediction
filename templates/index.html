@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WildVision AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <h1>🐾 WildVision AI</h1>
+        <p class="tagline">Smart CNN-powered Animal Recognition</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label class="upload-area">
+                <input type="file" name="image" accept="image/*" required>
+                <span>📷 Click to upload animal image</span>
+            </label>
+
+            <button class="action-btn" type="submit">
+                Analyze Image
+            </button>
+        </form>
+
+        {% if image_path %}
+            <div class="preview">
+                <img src="{{ image_path }}" alt="Uploaded Image">
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+        <h2>Prediction Result</h2>
+
+        {% if prediction %}
+            <div class="result-box">
+                <h3>{{ prediction }}</h3>
+                <p>Confidence: {{ confidence }}%</p>
+            </div>
+        {% else %}
+            <div class="placeholder">
+                Upload an image to see prediction
+            </div>
+        {% endif %}
+
+        <div class="class-cloud">
+            <span>Bear</span>
+            <span>Bird</span>
+            <span>Cat</span>
+            <span>Dog</span>
+            <span>Elephant</span>
+            <span>Horse</span>
+            <span>Lion</span>
+            <span>Panda</span>
+            <span>Tiger</span>
+            <span>Zebra</span>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 WildVision AI · Deep Learning Project
+</footer>
+
+</body>
+</html>
