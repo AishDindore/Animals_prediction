@@ -20,7 +20,7 @@ class_names = [
 def load_model_once():
     global model
     if model is None:
-        model = tf.keras.models.load_model("Animals_Images_Prediction.keras")
+        model = tf.keras.models.load_model("Animals_Images_Prediction.h5")
 
 # ================= UI ROUTE =================
 @app.route("/", methods=["GET", "POST"])
