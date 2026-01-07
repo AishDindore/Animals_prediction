@@ -27,7 +27,8 @@ def load_model_once():
     global model
     if model is None:
         print("Loading model...")
-        model = tf.keras.models.load_model(r"C:\Users\Dell\Desktop\Data_Science_class\workspace\Animals_prediction\Animals_Images_Prediction.h5", compile=False)
+        model_path = os.path.join(os.getcwd(), "Animals_Images_Prediction.h5")
+        model = tf.keras.models.load_model(model_path, compile=False)
 
 load_model_once()
 
