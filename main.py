@@ -3,8 +3,14 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import os
+import uuid
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
+
+print("FILES:", os.listdir("."))
 
 # ================= GLOBAL VARIABLES =================
 model = None
@@ -16,11 +22,14 @@ class_names = [
     "Kangaroo", "Lion", "Pandas", "Tiger", "Zebra"
 ]
 
-# ================= LOAD MODEL LAZILY =================
+# ================= LOAD MODEL ONCE =================
 def load_model_once():
     global model
     if model is None:
-        model = tf.keras.models.load_model("Animals_Images_Prediction.h5")
+        print("Loading model...")
+        model = tf.keras.models.load_model(r"C:\Users\Dell\Desktop\Data_Science_class\workspace\Animals_prediction\Animals_Images_Prediction.h5", compile=False)
+
+load_model_once()
 
 # ================= UI ROUTE =================
 @app.route("/", methods=["GET", "POST"])
@@ -30,12 +39,12 @@ def index():
     image_path = None
 
     if request.method == "POST":
-        load_model_once()
-
         file = request.files.get("image")
         if file:
             os.makedirs("static", exist_ok=True)
-            image_path = os.path.join("static", file.filename)
+
+            filename = f"{uuid.uuid4()}.jpg"
+            image_path = os.path.join("static", filename)
             file.save(image_path)
 
             img = Image.open(image_path).convert("RGB")
@@ -58,8 +67,6 @@ def index():
 @app.route("/predict-api", methods=["POST"])
 def predict_api():
     try:
-        load_model_once()
-
         if "image" not in request.files:
             return jsonify({"error": "No image file provided"}), 400
 
@@ -81,3 +88,6 @@ def predict_api():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
